@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{%load staticfiles%}
+{% block title %} Publishes and Sells  {% endblock %}
+
+{% block logo %}
+	<img align="center" class="logocentral" src="{% static "" %}{{miweb.logo}}" alt="Logo"/>
+{% endblock %}
+
+{% block menu %}
+	<li class="active"><a href="{% url "index" %}">Inicio</a></li>
+	<li><a href="#">Productos</a></li>
+    {% if user.is_authenticated %}
+		<li style="color:red"><a href="{% url "logout" %}">Logout</a></li>
+	{% else %}
+        <li><a href="{% url "registro" %}">Registrar</a></li>
+		<li style="color:red"><a href="{% url "login" %}">Log in</a></li>
+	{% endif %}
+
+    {% if user.is_authenticated %}
+       <li style="color:red">Bienvenido, <b>{{user.username}}</b></li>
+    {% endif %}
+{% endblock %}
+
+{% block jumbotron %}
+	<!--Aqui va el JumboTron -->
+	<section class="jumbotron">
+    	<div class="container">
+			<h1 class="titulo-blog">{{miweb.eslogan}}</h1>
+        </div>
+	</section>
+{% endblock %}
+
+{% block content %}
+	<article class="post clearfix" >
+		<video class="videocentral" width="530" height="440" controls autoplay>
+  			<source src="{% static "" %}{{miweb.video}}" type="video/mp4"> </source>
+		</video>
+	</article>
+
+	<article class="post clearfix" >
+		<h2 class="post-title">
+			<a href="#">MISION</a>
+		</h2>
+		<p class="post-contenido text-justify">
+			{{miweb.mision}}
+		</p>
+	</article>
+
+	<article class="post clearfix" >
+		<h2 class="post-title">
+			<a href="#">VISION</a>
+		</h2>
+		<p class="post-contenido text-justify">
+			{{miweb.vision}}
+		</p>
+	</article>
+
+	<article class="post clearfix" >
+		<h2 class="post-title">
+			<a href="#">Acerca de nosotros</a>
+		</h2>
+		<p class="post-contenido text-justify">
+			{{miweb.aboutme}}
+		</p>
+		<div class="contenedor-botones">
+			<a href="#" class="btn btn-primary">Contactanos</a>
+		</div>
+	</article>
+{% endblock %}

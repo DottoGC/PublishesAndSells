@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} Inicio de Sesion  {% endblock %}
+
+{% block logo %}
+	<img align="center" class="logocentral" src="{% static "" %}{{miweb.logo}}" alt="Logo"/>
+{% endblock %}
+
+
+{% block menu %}
+	<li><a href="{% url "index" %}">Inicio</a></li>
+	<li><a href="#">Productos</a></li>
+    {% if user.is_authenticated %}
+		<li style="color:red"><a href="{% url "logout" %}">Logout</a></li>
+	{% else %}
+        <li><a href="{% url "registro" %}">Registrar</a></li>
+		<li style="color:red"><a href="{% url "login" %}">Log in</a></li>
+	{% endif %}
+
+    {% if user.is_authenticated %}
+       <li style="color:red">Bienvenido, <b>{{user.username}}</b></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+	<article class="post clearfix" >
+    	<h1>Login</h1>
+         {% if message %}
+         	<b>{{message}}</b>
+         {% endif %}
+         <form action="" method="post">{% csrf_token %}
+         	{{form.as_p}}
+         	<input type="submit" value="Submit" />
+         </form>
+	</article>
+{% endblock %}

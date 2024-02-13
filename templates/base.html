@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="es">
+	<head>
+		<meta chrset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0">
+		<title>{% block title %} {% endblock %}</title>
+		<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
+		<link href="{% static "bootstrap/css/estilos.css" %}" rel="stylesheet"/>
+	</head>
+
+	<body>
+		<!--Aqui la cabecera principal -->
+		<header>
+			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+                {% block logo %}
+
+
+                {% endblock %}
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-fm">
+							<span class="sr-only">Desplegar/Ocultar Menu</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="#" class="navbar-brand">Publishes and sells</a>
+					</div>
+					<!-- Inicia Menu-->
+					<div class="collapse navbar-collapse" id="navegacion-fm">
+						<ul class="nav navbar-nav">
+							{% block menu %}
+
+
+							{% endblock %}
+						</ul>
+
+						<form action="" class="navbar-form navbar-right" role=search>
+							<div class="form-group">
+								<input type="text" name="" class="form-control" placeholder="buscar">
+							</div>
+							<button type="submit" class="btn btn-primary">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</form>
+
+					</div>
+				</div>
+			</nav>
+		</header>
+
+
+        {% block jumbotron %}
+
+        {% endblock %}
+
+
+		<!-- Aqui va el contenedor principal -->
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-9">
+					{% block content %}
+
+                    {% endblock %}
+
+				</section>
+
+				<aside class="col-md-3 hidden-xs hidden-sm">
+					<h4>Categorias</h4>
+					<div class="list-group">
+						<a href="#" class="list-group-item active">Ropa</a>
+						<a href="#" class="list-group-item ">Herramientas</a>
+						<a href="#" class="list-group-item ">Tecnologia</a>
+						<a href="#" class="list-group-item ">Musica</a>
+						<a href="#" class="list-group-item ">Celulares</a>
+					</div>
+
+					<h4>Productos Recientes</h4>
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">Laptop CyberPower</h4>
+						<p class="list-group-item-text">Capacidad de Memoria hasta de 16GB, Memoria secundaria de 1T, Microprocesador Intel Inside Core i7. </p>
+					</a>
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">Camara Canon Profecional T-O78 </h4>
+						<p class="list-group-item-text">Memoria interna de 500GB, Fotos en super alta resolucion y videos en full HD</p>
+					</a>
+
+				</aside>
+			</div>
+		</section>
+
+		<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6">
+					<p>Design by: Ottoniel Guarchaj - Email: dottogc@yahoo.com</p>
+				</div>
+			</div>
+		</div>
+		</footer>
+
+		<script src="{%static "bootstrap/js/jquery.js"%}"></script>
+		<script src="{%static "bootstrap/js/bootstrap.min.js"%}"></script>
+	</body>
+</html>
